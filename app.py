@@ -12,8 +12,19 @@ def display_table():
     }
     df = pd.DataFrame(data)
 
+	df.index.name = "Rank"
     # Convert the DataFrame to an HTML table string
-    html_table = df.to_html()
+    html_table = df.to_html(classes="wide_table")
+
+
+	html_content = f"""
+    <style>
+        .wide_table {
+            width: 100%;
+        }
+    </style>
+    {html_table}
+    """
 
     return html_table
 
