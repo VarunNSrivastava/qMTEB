@@ -31,7 +31,7 @@ MODELS = [
 
 
 def get_model_size(model_name):
-    return os.path.getsize(f"models/{model_name}/pytorch_model.bin") / (1024.0 * 1024.0)
+    return os.path.getsize(f"models/{model_name}") / (1024.0 * 1024.0)
 
 
 def compute_model_score(model_name):
@@ -64,16 +64,16 @@ def compute_model_score(model_name):
 DATA = {
         "Model": MODELS,
         "Model Size (MB)": [
-                get_model_size(model) for model in MODELS
+                get_model_size(f"{model}/pytorch_model.bin") for model in MODELS
             ],
         "Score": [
-                5  # compute_model_score(model) for model in MODELS
+                compute_model_score(model) for model in MODELS
             ],
         "q8 Model Size (MB)": [
-                get_model_size(model + "-q8") for model in MODELS
+                get_model_size(f"optimum/{model}-self-optimum-q8/model.onnx") for model in MODELS
             ],
         "q8 Score": [
-                compute_model_score(model + "-q8") for model in MODELS
+                compute_model_score(f"optimum/{model}-q8") for model in MODELS
             ],
     }
 
