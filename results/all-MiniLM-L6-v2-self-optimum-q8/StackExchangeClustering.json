@@ -1,0 +1,10 @@
+{
+  "dataset_revision": "6cbc1f7b2bc0622f2e39d2c77fa502909748c259",
+  "mteb_dataset_name": "StackExchangeClustering",
+  "mteb_version": "1.1.0",
+  "test": {
+    "evaluation_time": 610.37,
+    "v_measure": 0.4670523695116733,
+    "v_measure_std": 0.06592905155287662
+  }
+}

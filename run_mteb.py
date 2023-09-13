@@ -53,14 +53,16 @@ def parse_args():
     parser.add_argument("--lang", type=str, default="en")
     parser.add_argument("--taskname", type=str, default=None)
     parser.add_argument("--batchsize", type=int, default=128)
-    parser.add_argument("--device", type=str, default="mps")  # sorry :>
+    parser.add_argument("--device", type=str, default="mps")
     args = parser.parse_args()
     return args
 
 
 def main(args):
     """
-    ex: python run_array.py --modelpath ./models/all-MiniLM-L6-v2
+    ex: python run_mteb.py --modelpath ./models/all-MiniLM-L6-v2-unquantized
+
+    Optimum/onnx models need to contain string "opt" somewhere in model path or name.
     """
     model = SentenceTransformer(args.modelpath, device=args.device)
     model_name = args.modelpath.split("/")[-1].split("_")[-1]
